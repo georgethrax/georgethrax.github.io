@@ -32,6 +32,7 @@
         AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
     });
     map.setMapStyle('fresh');
+    map.setLang('zh_en');
     addCloudLayer();//添加云图图层
     editCopyright();//修改版权信息，加上二维码
     setLimitBounds();//限制地图范围为清华大学
@@ -56,6 +57,7 @@
     //设置显示范围清华大学
     function setLimitBounds(){
         THUBounds = new AMap.Bounds(new AMap.LngLat(116.309955,39.994404),new AMap.LngLat(116.345016,40.013996));
+        map.setBounds(THUBounds);
         map.setLimitBounds(THUBounds);
     }
     //添加云图图层
