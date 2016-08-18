@@ -33,6 +33,7 @@
     });
     map.setMapStyle('fresh');
     addCloudLayer();//添加云图图层
+    editCopyright();//修改版权信息，加上二维码
     //解析定位结果
     function onComplete(data) {
         var str=['定位成功'];
@@ -46,7 +47,11 @@
     function onError(data) {
         document.getElementById('tip').innerHTML = '定位失败';
     }
-    
+    //修改版权信息，加上二维码
+    function editCopyright(){
+        var str =  ' | ' + '<a href="http://lbs.amap.com/" target="_blank" trace="api">开放平台</a>';
+        document.getElementsByClassName('amap-copyright')[0].innerHTML += str;
+    }
     //添加云图图层
     function addCloudLayer() {
         //加载云图层插件
@@ -64,7 +69,7 @@
                     //photo = ['<img width=240 height=100 src="' + clouddata._image[0]._preurl + '"><br>'];
                 //}
                 var infoWindow = new AMap.InfoWindow({
-                    content: "<font class='title'>" + clouddata._name + "</font><hr/>" ,//+ photo.join("") + "地址：" + clouddata._address + "<br />" + "创建时间：" + clouddata._createtime + "<br />" + "更新时间：" + clouddata._updatetime,
+                    content: "<font class='title'>" + clouddata._name + "</font><hr/>" + photo.join(""),// + "地址：" + clouddata._address + "<br />" + "创建时间：" + clouddata._createtime + "<br />" + "更新时间：" + clouddata._updatetime,
                     size: new AMap.Size(0, 0),
                     autoMove: true,
                     offset: new AMap.Pixel(0, -25)
