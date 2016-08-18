@@ -48,9 +48,9 @@
     function onError(data) {
         document.getElementById('tip').innerHTML = '定位失败';
     }
-    //修改版权信息，加上二维码
+    //修改版权信息
     function editCopyright(){
-        var str =  ' | ' + '<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDczNDYyNQ==&mid=2654100493&idx=1&sn=819470d10b0688ade5f065ce62db141f&scene=4">清华大学学生公益</a>' + ' | ' + '<span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">清THU/span>';
+        var str =  ' | ' + '<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDczNDYyNQ==&mid=2654100493&idx=1&sn=819470d10b0688ade5f065ce62db141f&scene=4">清华大学学生公益</a>';
         document.getElementsByClassName('amap-copyright')[0].innerHTML += str;
     }
     //设置显示范围清华大学
