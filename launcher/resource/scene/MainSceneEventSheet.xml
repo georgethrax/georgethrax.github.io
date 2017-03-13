@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventSheets layout="MainScene" previous="" next="" version="2.2">
+  <item type="instance" UID="652"/>
+  <item type="instance" UID="648"/>
+  <item type="instance" UID="646"/>
+  <item type="instance" UID="644"/>
+  <item type="instance" UID="642"/>
+  <item type="instance" UID="640"/>
+  <item type="instance" UID="570">
+    <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏行为">
+      <item valueDataType="number" value="1" name="active"/>
+      <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+      <item valueDataType="number" value="300" name="speed"/>
+    </item>
+  </item>
+  <item type="instance" UID="594"/>
+  <item type="instance" UID="592">
+    <item initValue="0" variableType="number" variableName="gameover" type="variable"/>
+  </item>
+  <item type="instance" UID="588">
+    <item type="behavior" behaviorType="BulletBehaivor" name="子弹行为">
+      <item valueDataType="number" value="300" name="speed"/>
+      <item valueDataType="number" value="0" name="acceleration"/>
+      <item valueDataType="number" value="0" name="gravity"/>
+      <item valueDataType="number" value="180" name="angle"/>
+      <item valueDataType="number" value="0" name="bounceOffSolids"/>
+      <item valueDataType="number" value="1" name="solidChangedAngle"/>
+    </item>
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出边界销毁行为">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+  </item>
+  <item type="instance" UID="586">
+    <item type="behavior" behaviorType="BulletBehaivor" name="子弹行为">
+      <item valueDataType="number" value="300" name="speed"/>
+      <item valueDataType="number" value="0" name="acceleration"/>
+      <item valueDataType="number" value="0" name="gravity"/>
+      <item valueDataType="number" value="180" name="angle"/>
+      <item valueDataType="number" value="0" name="bounceOffSolids"/>
+      <item valueDataType="number" value="1" name="solidChangedAngle"/>
+    </item>
+    <item type="behavior" behaviorType="DestoryOutsideLayoutBehaivor" name="出边界销毁行为">
+      <item valueDataType="number" value="2" name="type"/>
+    </item>
+  </item>
+  <item type="instance" UID="557">
+    <item initValue="0" variableType="number" variableName="t" type="variable"/>
+    <item initValue="6" variableType="number" variableName="v" type="variable"/>
+    <item initValue="0" variableType="number" variableName="score" type="variable"/>
+  </item>
+  <item type="instance" UID="578">
+    <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏行为">
+      <item valueDataType="number" value="1" name="active"/>
+      <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+      <item valueDataType="number" value="30" name="speed"/>
+    </item>
+  </item>
+  <item type="instance" UID="577">
+    <item type="behavior" behaviorType="ScrollBehaivor" name="滚屏行为">
+      <item valueDataType="number" value="1" name="active"/>
+      <item valueDataType="string" value="%22scrollLeft%22" name="scrollDirectionType"/>
+      <item valueDataType="number" value="50" name="speed"/>
+    </item>
+  </item>
+  <item type="variable" variableName="start" variableType="number" initValue="0"/>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="0.01" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="moveAtAngle" target="fly">
+      <item valueDataType="number" value="270" name="14"/>
+      <item valueDataType="number" value="fly.v" name="15"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="0.01" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="addTo" target="fly">
+      <item valueDataType="string" value="t" name="10" variable="true"/>
+      <item valueDataType="number" value="0.01" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="0.01" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="subtractFrom" target="fly">
+      <item valueDataType="string" value="v" name="10" variable="true"/>
+      <item valueDataType="number" value="4*fly.t" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnTouchTapEvent" callName="onTouchTap" isTrigger="true" target="Touch"/>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="fly">
+      <item valueDataType="string" value="v" name="10" variable="true"/>
+      <item valueDataType="any" value="6" name="11"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="fly">
+      <item valueDataType="string" value="t" name="10" variable="true"/>
+      <item valueDataType="any" value="0" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryTickEvent" callName="everyTick" isTrigger="false" target="System"/>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="System">
+      <item valueDataType="string" value="start" name="10" variable="true"/>
+      <item valueDataType="any" value="150%2Bls.random()*600" name="9"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryXSecondsEvent" callName="everyXSecondEvent" isTrigger="false" target="System">
+      <item valueDataType="number" value="2%2Bls.random()*2" name="interval"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="columnd" name="23" isFamily="false"/>
+      <item valueDataType="number" value="1" name="22"/>
+      <item valueDataType="number" value="610" name="21"/>
+      <item valueDataType="number" value="System.start" name="20"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="createObject" target="System">
+      <item valueDataType="string" value="columnu" name="23" isFamily="false"/>
+      <item valueDataType="number" value="1" name="22"/>
+      <item valueDataType="number" value="610" name="21"/>
+      <item valueDataType="number" value="System.start-300-ls.random()*300" name="20"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="地面">
+      <item valueDataType="string" value="fly" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="分数">
+      <item valueDataType="string" value="gameover" name="10" variable="true"/>
+      <item valueDataType="any" value="1" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="columnd">
+      <item valueDataType="string" value="fly" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="分数">
+      <item valueDataType="string" value="gameover" name="10" variable="true"/>
+      <item valueDataType="any" value="1" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="columnu">
+      <item valueDataType="string" value="fly" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setValue" target="分数">
+      <item valueDataType="string" value="gameover" name="10" variable="true"/>
+      <item valueDataType="any" value="1" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="EveryTickEvent" callName="everyTick" isTrigger="false" target="System"/>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="分数">
+      <item valueDataType="string" value="%22Score%3A%22%2Bfly.score" name="1"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnCollisionWithOtherObjectEvent" callName="onCollisionWithOtherObject" isTrigger="true" target="columnd">
+      <item valueDataType="string" value="计分点" name="object" isFamily="false"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="addTo" target="fly">
+      <item valueDataType="string" value="score" name="10" variable="true"/>
+      <item valueDataType="number" value="1" name="11"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="分数">
+      <item valueDataType="string" value="gameover" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="1" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="0" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="end3">
+      <item valueDataType="number" value="0" name="16"/>
+      <item valueDataType="number" value="0" name="17"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="分数">
+      <item valueDataType="string" value="gameover" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="1" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22lessThan%22" name="operationType"/>
+      <item valueDataType="any" value="10" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22greaterThan%22" name="operationType"/>
+      <item valueDataType="any" value="0" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="end1">
+      <item valueDataType="number" value="0" name="16"/>
+      <item valueDataType="number" value="0" name="17"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="分数">
+      <item valueDataType="string" value="gameover" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="1" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22greaterOrEqual%22" name="operationType"/>
+      <item valueDataType="any" value="10" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22lessThan%22" name="operationType"/>
+      <item valueDataType="any" value="50" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="end2">
+      <item valueDataType="number" value="0" name="16"/>
+      <item valueDataType="number" value="0" name="17"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="分数">
+      <item valueDataType="string" value="gameover" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="1" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22greaterOrEqual%22" name="operationType"/>
+      <item valueDataType="any" value="50" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22lessThan%22" name="operationType"/>
+      <item valueDataType="any" value="100" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="end3">
+      <item valueDataType="number" value="0" name="16"/>
+      <item valueDataType="number" value="0" name="17"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="分数">
+      <item valueDataType="string" value="gameover" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="1" name="value"/>
+    </item>
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="fly">
+      <item valueDataType="string" value="score" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22greaterOrEqual%22" name="operationType"/>
+      <item valueDataType="any" value="100" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="end4">
+      <item valueDataType="number" value="0" name="16"/>
+      <item valueDataType="number" value="0" name="17"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="CompareInstanceVariableEvent" callName="compareInstanceVariable" isTrigger="false" target="分数">
+      <item valueDataType="string" value="gameover" name="instanceVariable" variable="true"/>
+      <item valueDataType="string" value="%22equalTo%22" name="operationType"/>
+      <item valueDataType="any" value="1" name="value"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="columnd"/>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="columnu"/>
+    <item type="action" persistent="false" callTarget="instance" callName="destory" target="fly"/>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="分数">
+      <item valueDataType="number" value="300" name="16"/>
+      <item valueDataType="number" value="300" name="17"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setFontSize" target="分数">
+      <item valueDataType="number" value="128" name="5"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setPosition" target="reset">
+      <item valueDataType="number" value="300" name="16"/>
+      <item valueDataType="number" value="600" name="17"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setText" target="分数">
+      <item valueDataType="string" value="fly.score" name="1"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setTextAlign" target="分数">
+      <item valueDataType="string" value="center" name="6"/>
+    </item>
+    <item type="action" persistent="false" callTarget="instance" callName="setAlpha" target="远景">
+      <item valueDataType="number" value="0.8" name="10"/>
+    </item>
+  </item>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnButtonBeginEvent" callName="onButtonBegin" isTrigger="true" target="reset"/>
+    <item type="action" persistent="false" callTarget="instance" callName="gotoScene" target="System">
+      <item valueDataType="string" value="%22MainScene%22" name="18"/>
+    </item>
+  </item>
+</eventSheets>

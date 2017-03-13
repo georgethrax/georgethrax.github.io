@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventSheets layout="Gamestart" previous="" next="" version="2.2">
+  <item type="instance" UID="609"/>
+  <item type="instance" UID="605"/>
+  <item type="instance" UID="601"/>
+  <item type="instance" UID="599"/>
+  <item type="variable" variableName="start" variableType="number" initValue="0"/>
+  <item type="event" conditionRelationShip="true" triggerOnceWhileTrue="false">
+    <item type="condition" callTarget="instance" paramsClass="OnButtonBeginEvent" callName="onButtonBegin" isTrigger="true" target="startbutton"/>
+    <item type="action" persistent="false" callTarget="instance" callName="gotoScene" target="System">
+      <item valueDataType="string" value="%22MainScene%22" name="18"/>
+    </item>
+  </item>
+</eventSheets>
